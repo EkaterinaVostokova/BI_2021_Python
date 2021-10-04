@@ -35,8 +35,8 @@ def complement(x):
         for element in x:
             result.append(al[len(al) - 1 - al.index(element)])
         return ("".join(result))
-    
-    
+
+
 def reverse_complement(x):
     result = complement(x)
     return result[::-1]
