@@ -5,12 +5,7 @@
 
 
 #goal: find out most used American values and convert them into European ones
-#data used: Температура по Цельсия = (Температура по Фаренгейту - 32) * 5 / 9
-#1 Лига [lea] = 3 милям = 24 фурлонгам = 4828.032 м
-#1 Миля [mi] = 8 фурлонгов = 1760 ярдов = 5280 футов = 1609.344 м
-#1 Фут [ft] = 12 дюймов = 0.3048 м
-#1 Дюйм [in] = 0.0254 м
-#Миля в секунду [mps] = 1609.34401 м/с.
+
 
 data = input ("What to convert? American -> European. Possible: temperature, distance, velocity")
 if data == "temperature":
