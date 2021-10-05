@@ -9,7 +9,7 @@
 
 data = input("What to convert? American -> European. Possible: temperature, distance, velocity")
 if data == "temperature":
-    temperature = (float(input ("What is the temperature in Fahrenheit? ")) - 32) * (5/9)
+    temperature = (float(input("What is the temperature in Fahrenheit? ")) - 32) * (5/9)
     print(temperature, "celsius")
 elif data == "distance":
     distance_type = input("League, Mile, Foot, Caliber or Inch? ")
