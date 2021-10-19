@@ -8,7 +8,7 @@
 
 # This program mostly uses a lot of lists so it works very badly if size of fastq file is big which is usually the case
 # It seems very heavily memory-consuming and tends to crash
-# However, I am unsure how to fix this. Maybe it would be better to just take 4 lines of the file and work with them and iterate
+# However, I am unsure how to fix this. Maybe it would be better to just take 4 lines of the file and work with them
 # 1. main function (just combines all the rest). works through iterating over lists
 def main(input_fastq, output_file_prefix, gc_bounds, length_bounds, quality_threshold, save_filtered):
     # opens
