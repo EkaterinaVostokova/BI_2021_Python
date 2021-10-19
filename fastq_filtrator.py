@@ -7,13 +7,13 @@
 # Defining the functions
 # 1. main function (just combines all the rest). works through iterating over lists
 def main(input_fastq, output_file_prefix, gc_bounds, length_bounds, quality_threshold, save_filtered):
-    #opens
+    # opens
     open_file(input_fastq, full_length_file)
-    #now we have open the file and created a "full length file" list
+    # now we have open the file and created a "full length file" list
     for read in full_length_file:
         gc_bounds_function(read, gc_bounds, reads_passed_GC, reads_not_passed_GC)
     for read in reads_passed_GC:
-        length_bounds_function(read, length_bounds, reads_passed_GC_length, reads_not_passed_GC_length)    
+        length_bounds_function(read, length_bounds, reads_passed_GC_length, reads_not_passed_GC_length)  
     for read in reads_passed_GC_length:
         threshold_quality_function(read, reads_passed_GC_length_quality)
     filename_passed = str(output_file_prefix) + "_passed.fastq"
@@ -28,8 +28,10 @@ def main(input_fastq, output_file_prefix, gc_bounds, length_bounds, quality_thre
 def divide_into_read_parts(lines=None):
     name_parts = ['name', 'sequence', 'optional', 'quality']
     return {k: v for k, v in zip(name_parts, lines)}
-# maybe it will be better not to create it later so it does not take space
-# the idea was found at https://www.biostars.org/p/317524/
+    # maybe it will be better not to create it later so it does not take space
+    # the idea was found at https://www.biostars.org/p/317524/
+
+
 def open_file(input_fastq, full_length_file):
     with open(input_fastq, 'r') as f:
         lines = []
@@ -54,9 +56,8 @@ def GC_count(read):
 # In[81]:
 
 
-# gc bounds itself. if it will be the first function, it would take the initial list and after it 
+# gc bounds itself. if it will be the first function, it would take the initial list and after it
 # the reads that pass further are saved in reads_passed_GC
-
 def gc_bounds_function(read, gc_bounds, reads_passed_GC, reads_not_passed_GC):
     gc_bounds_number = list()
     gc_bounds = gc_bounds.split()
@@ -69,10 +70,10 @@ def gc_bounds_function(read, gc_bounds, reads_passed_GC, reads_not_passed_GC):
         if int(gc_bounds[0]) <= int(gc_bounds[1]):
             gc_bounds_number = (int(gc_bounds[0]), int(gc_bounds[1]))
     if GC_count(read) >= gc_bounds_number[0] and GC_count(read) <= gc_bounds_number[1]:
-        reads_passed_GC.append (read)
+        reads_passed_GC.append(read)
     else:
         if save_filtered.lower() == "true":
-            reads_not_passed_GC.append (read)
+            reads_not_passed_GC.append(read)
 
 
 # In[82]:
@@ -81,7 +82,7 @@ def gc_bounds_function(read, gc_bounds, reads_passed_GC, reads_not_passed_GC):
 def length_bounds_function(read, length_bounds, reads_passed_GC_length, reads_not_passed_GC_length):
     # NOW LENGTH BOUNDS
     # here no subfunction like the one counting GC content first is needed
-    # here you can only enter number as it is, without **. therefore, 2**32 would be default but would not be accepted by the program
+    # here you can only enter number as it is, without **
     length_bounds_number = list()
     length_bounds = length_bounds.split()
     if len(length_bounds) == 1:
@@ -91,19 +92,19 @@ def length_bounds_function(read, length_bounds, reads_passed_GC_length, reads_no
             length_bounds_number = (0, int(length_bounds[0]))
     elif len(length_bounds) == 2 and length_bounds[0].isdigit() and length_bounds[1].isdigit():
         if int(length_bounds[0]) <= int(length_bounds[1]):
-            length_bounds_number = (int(length_bounds[0]), int(length_bounds[1]))     
+            length_bounds_number = (int(length_bounds[0]), int(length_bounds[1]))
     if len(read['sequence']) >= length_bounds_number[0] and len(read['sequence']) <= length_bounds_number[1]:
-        reads_passed_GC_length.append (read)
+        reads_passed_GC_length.append(read)
     else:
         if save_filtered.lower() == "true":
-            reads_not_passed_GC_length.append (read)
+            reads_not_passed_GC_length.append(read)
 
 
 # In[83]:
 
 
 def average_quality(read):
-    # пороговое значение среднего качества рида для фильтрации, по-умолчанию равно 0 (шкала phred33). 
+    # пороговое значение среднего качества рида для фильтрации, по-умолчанию равно 0 (шкала phred33)
     # Риды со средним качеством по всем нуклеотидам ниже порогового отбрасываются
     # it converts to ASCII score
     sum_of_reads = 0
@@ -154,13 +155,13 @@ def writing_results(filename_passed, filename_failed):
 # input of all files
 input_fastq = input("Enter path to the file")
 output_file_prefix = input("Write any prefix name")
-#gc_bounds = 
+# gc_bounds = 
 gc_bounds = input("Define GC bounds - from/to, to, default")
-#length_bounds =
+# length_bounds =
 length_bounds = input("Define length bounds - from/to (2 numbers, to (1 number), default (write 'default')")
-#quality_threshold
+# quality_threshold
 quality_threshold = input("Enter quality threshold (one number) or choose 'default'")
-#save_filtered
+# save_filtered
 save_filtered = input("Do you need to save reads which did not pass filter? Type 'True' or 'False'")
 full_length_file = []
 reads_passed_GC = []
@@ -171,8 +172,7 @@ reads_passed_GC_length_quality = []
 reads_not_passed_GC_length_quality = []
 
 
-# In[102]:
+# In[103]:
 
 
 main(input_fastq, output_file_prefix, gc_bounds, length_bounds, quality_threshold, save_filtered)
-
