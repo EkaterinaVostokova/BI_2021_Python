@@ -5,6 +5,10 @@
 
 
 # Defining the functions
+
+# This program mostly uses a lot of lists so it works very badly if size of fastq file is big which is usually the case
+# It seems very heavily memory-consuming and tends to crash
+# However, I am unsure how to fix this. Maybe it would be better to just take 4 lines of the file and work with them and iterate
 # 1. main function (just combines all the rest). works through iterating over lists
 def main(input_fastq, output_file_prefix, gc_bounds, length_bounds, quality_threshold, save_filtered):
     # opens
@@ -56,7 +60,7 @@ def GC_count(read):
 # In[81]:
 
 
-# gc bounds itself. if it will be the first function, it would take the initial list and after it
+# If it will be the first function, it would take the initial list and after it
 # the reads that pass further are saved in reads_passed_GC
 def gc_bounds_function(read, gc_bounds, reads_passed_GC, reads_not_passed_GC):
     gc_bounds_number = list()
