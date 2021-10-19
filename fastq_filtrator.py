@@ -13,7 +13,7 @@ def main(input_fastq, output_file_prefix, gc_bounds, length_bounds, quality_thre
     for read in full_length_file:
         gc_bounds_function(read, gc_bounds, reads_passed_GC, reads_not_passed_GC)
     for read in reads_passed_GC:
-        length_bounds_function(read, length_bounds, reads_passed_GC_length, reads_not_passed_GC_length)  
+        length_bounds_function(read, length_bounds, reads_passed_GC_length, reads_not_passed_GC_length)
     for read in reads_passed_GC_length:
         threshold_quality_function(read, reads_passed_GC_length_quality)
     filename_passed = str(output_file_prefix) + "_passed.fastq"
@@ -121,7 +121,7 @@ def threshold_quality_function(read, reads_passed_GC_length_quality):
     if quality_threshold.isdigit():
         quality_threshold_number = int(quality_threshold)
     if average_quality(read) >= quality_threshold_number:
-            reads_passed_GC_length_quality.append(read)
+        reads_passed_GC_length_quality.append(read)
     else:
         if save_filtered.lower() == "true":
             reads_not_passed_GC_length_quality.append(read)
@@ -155,7 +155,7 @@ def writing_results(filename_passed, filename_failed):
 # input of all files
 input_fastq = input("Enter path to the file")
 output_file_prefix = input("Write any prefix name")
-# gc_bounds = 
+# gc_bounds =
 gc_bounds = input("Define GC bounds - from/to, to, default")
 # length_bounds =
 length_bounds = input("Define length bounds - from/to (2 numbers, to (1 number), default (write 'default')")
