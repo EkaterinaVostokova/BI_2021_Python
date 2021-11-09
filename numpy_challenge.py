@@ -18,7 +18,7 @@ def multiplication_check(list_matrices):
     for i in range(len(list_matrices)-1):
         # число столбцов первого равно числу строк второго
         if len(list_matrices[i][0]) == len(list_matrices[i+1]):
-            c+=1
+            c += 1
     if c == len(list_matrices)-1:
         return True
     else:
