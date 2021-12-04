@@ -52,14 +52,15 @@ def compute_multidimensional_distance(a, b):
 
 # In[ ]:
 
-def compute_pair_distances (a):
+def compute_pair_distances(a):
     b = np.zeros((len(a), len(a)))
     for i in range(len(a)):
         for j in range(len(a)):
             b[i][j] = compute_multidimensional_distance(a[i], a[j])
             b[j][i] = b[i][j]
     return b
-    
+
+
 if __name__ == "__main__":
     n1 = np.arange(50, 2, -3)
     n2 = np.array([[0, 1, 2], [3, 4, 5]])
