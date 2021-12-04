@@ -53,6 +53,7 @@ def compute_multidimensional_distance(a, b):
 # In[ ]:
 
 def compute_pair_distances(a):
+    # refers to the compute multidimensional distance function
     b = np.zeros((len(a), len(a)))
     for i in range(len(a)):
         for j in range(len(a)):
