@@ -28,9 +28,11 @@ times_numpy = []
 # here maximum iteration number can be set
 for i in range(10, 10**7, 1000000):
     i_s.append(i)
+    # for random
     start_time = time.time()
     [random.uniform(0, 1) for x in range(i)]
     times_random.append(time.time() - start_time)
+    # for numpy
     start_time = time.time()
     np.random.uniform(0, 1, (1, i))
     times_numpy.append(time.time() - start_time)
@@ -50,7 +52,7 @@ plt.ylabel('time of function')
 
 # In[ ]:
 
-
+# to check if a list is sorted
 def check_sorted(a):
     for i in range(0, len(a)-1):
         if (a[i] > a[i+1]):
@@ -70,7 +72,7 @@ def monkey_sort(a):
 '''
 
 # list 'a' is necessary
-
+# any max number can be set
 max_value = 60
 out = []
 out_std = []
@@ -78,6 +80,7 @@ for i in range(10, max_value, 10):
     b = timeit.repeat(stmt=mycode, repeat=i)
     out.append(np.mean(b))
     out_std.append(np.std(b))
+# still need to add deviations somehow    
 plt.plot(out)
 
 
@@ -118,9 +121,10 @@ plt.scatter(x, y)
 
 # In[ ]:
 
-
+# n could be any number
 n = 1000
 a = np.zeros((n, n))
+# three points of the triangle
 points = np.array([(0, 0), (0, n), (n, n//2)])
 start = np.array((0, 0))
 for i in range(n*n):
@@ -148,6 +152,7 @@ for word in ls:
     if len(word) > 2:
         if word[-1] in string.punctuation:
             # if the last element is dot or comma
+            # but is '-' is inside the word, it would not be recognized
             word1 = ''.join(random.sample(word[1:-2], len(word)-3))
             word = word.replace(word[1:-2], word1)
             ls1.append(word)
