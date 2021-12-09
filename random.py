@@ -80,7 +80,7 @@ for i in range(10, max_value, 10):
     b = timeit.repeat(stmt=mycode, repeat=i)
     out.append(np.mean(b))
     out_std.append(np.std(b))
-# still need to add deviations somehow    
+# still need to add deviations somehow
 plt.plot(out)
 
 
