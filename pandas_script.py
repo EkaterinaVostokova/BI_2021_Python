@@ -166,5 +166,5 @@ plt.legend()
 # In[ ]:
 
 
-As we see, cheaper flats have smaller kitchen spaces
+# As we see, cheaper flats have smaller kitchen spaces
 
