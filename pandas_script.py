@@ -34,7 +34,8 @@ lst = pd.concat([c["A"], c["T"], c["G"], c["C"]]).dropna().tolist()
 
 
 plt.figure(figsize=(15, 10))
-plt.hist(lst, bins=100, edgecolor='black') # plotting histogram
+plt.hist(lst, bins=100, edgecolor='black')
+# plotting histogram
 plt.title("Distribution of all 4 positions together")
 
 
@@ -51,7 +52,8 @@ lstG = c["G"].dropna().tolist()
 
 
 plt.figure(figsize=(15, 10))
-plt.hist(lstA, bins=50, color='green', label="A", edgecolor='black') # plotting histogram
+plt.hist(lstA, bins=50, color='green', label="A", edgecolor='black')
+# plotting histogram
 plt.hist(lstC, bins=50, color='red', label="C", edgecolor='black')
 plt.hist(lstT, bins=50, color='blue', label="T", edgecolor='black')
 plt.hist(lstG, bins=50, color='yellow', label="G", edgecolor='black')
@@ -64,13 +66,15 @@ plt.legend()
 # In[125]:
 
 
-train_part = c[c["matches"] > c["matches"].mean()] # где matches больше чем среднее
+train_part = c[c["matches"] > c["matches"].mean()]
+# где matches больше чем среднее
 
 
 # In[126]:
 
 
-train_part = train_part[["pos", "reads_all", "mismatches", "deletions", "insertions"]] # selecting specific columns
+train_part = train_part[["pos", "reads_all", "mismatches", "deletions", "insertions"]]
+# selecting specific columns
 
 
 # In[128]:
@@ -101,13 +105,14 @@ flat_df = pd.read_csv('flats_moscow.csv')
 flat_df.describe()
 
 
-# The dataset contains columns such as Price, Total Space of Apartment, Living Space, Kitchen space, Distance to center, 
+# The dataset contains columns such as Price, Total Space of Apartment, Living Space, Kitchen space, Distance to center,
 # Distance to Metro, brick or not, floor.
 
 # In[192]:
 
 
-flat_df[flat_df["price"] < 100] # checking the apartments from lower range of prices
+flat_df[flat_df["price"] < 100]
+# checking the apartments from lower range of prices
 
 
 # In[182]:
@@ -142,15 +147,17 @@ sns.heatmap(flat_df.corr(), cbar=True, annot=True, cmap='Blues').set_title('Corr
 
 
 plt.title("Correlations between price and total space")
-sns.heatmap(pd.DataFrame(flat_df, columns=['price','totsp']).corr(), annot=True)
+sns.heatmap(pd.DataFrame(flat_df, columns=['price', 'totsp']).corr(), annot=True)
 plt.show()
 
 
 # In[214]:
 
 
-cheap_flats = flat_df[flat_df["price"] < 95] # 459 flats
-exp_flats = flat_df[flat_df["price"] > 150] # 395 flats
+cheap_flats = flat_df[flat_df["price"] < 95]
+# 459 flats
+exp_flats = flat_df[flat_df["price"] > 150]
+# 395 flats
 plt.figure(figsize=(15, 10))
 plt.title("Comparison of kitchen space for cheap and expensive apartments")
 sns.distplot(cheap_flats['kitsp'], color='g', hist_kws=dict(edgecolor="black", linewidth=2), label="cheap flats")
