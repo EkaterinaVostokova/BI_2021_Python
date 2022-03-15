@@ -14,7 +14,7 @@ import sqlite3
 connection = sqlite3.connect('genetics_data_new.db')
 # creating new database or connecting to it
 
-Opening both CSV files, selecting data
+# Opening both CSV files, selecting data
 # In[31]:
 
 
