@@ -90,8 +90,8 @@ connection.execute(query_meta)
 
 
 connection.executemany('''INSERT INTO genes_4 ('SNP_Name', 'SNP_Index', 'SNP_Aux', 'Sample_ID', 'SNP', 'Allele1_Top',
-'Allele2_Top', 'Allele1_Forward','Allele2_Forward','Allele1_AB','Allele2_AB','Chr', 'Position', 'GC_Score','GT_Score',
-'Theta','R','B_Allele_Freq','Log_R_Ratio') VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);''', to_db)
+            'Allele2_Top', 'Allele1_Forward','Allele2_Forward','Allele1_AB','Allele2_AB','Chr', 'Position', 'GC_Score','GT_Score',
+            'Theta','R','B_Allele_Freq','Log_R_Ratio') VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);''', to_db)
 
 
 # In[41]:
