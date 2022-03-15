@@ -21,9 +21,9 @@ connection = sqlite3.connect('genetics_data_new.db')
 with open('genstudio.csv', 'r') as f:
     file = csv.DictReader(f)
     to_db = [(i['SNP Name'], i['SNP Index'], i["SNP Aux"], i["Sample ID"], i["SNP"], i["Allele1 - Top"],
-        i["Allele2 - Top"], i["Allele1 - Forward"], i["Allele2 - Forward"], i["Allele1 - AB"], i["Allele2 - AB"],
-        i["Chr"], i["Position"], i["GC Score"], i["GT Score"], i["Theta"], i["R"],
-        i["B Allele Freq"], i["Log R Ratio"]) for i in file]
+            i["Allele2 - Top"], i["Allele1 - Forward"], i["Allele2 - Forward"], i["Allele1 - AB"], 
+            i["Allele2 - AB"], i["Chr"], i["Position"], i["GC Score"], i["GT Score"], i["Theta"], i["R"],
+            i["B Allele Freq"], i["Log R Ratio"]) for i in file]
 
 
 # In[44]:
@@ -91,7 +91,8 @@ connection.execute(query_meta)
 
 connection.executemany('''INSERT INTO genes_4 ('SNP_Name', 'SNP_Index', 'SNP_Aux', 'Sample_ID', 'SNP', 'Allele1_Top',
     'Allele2_Top', 'Allele1_Forward','Allele2_Forward','Allele1_AB','Allele2_AB','Chr', 'Position', 'GC_Score','GT_Score',
-    'Theta','R','B_Allele_Freq','Log_R_Ratio') VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);''', to_db)
+    'Theta','R','B_Allele_Freq','Log_R_Ratio')
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);''', to_db)
 
 
 # In[41]:
