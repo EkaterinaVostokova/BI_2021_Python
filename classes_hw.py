@@ -49,19 +49,19 @@ class Mouse:
 
 
 string = str(input())
+
+
 class RNA:
-    
-    
     def __init__(self, input_seq=string):
         self.seq = Seq(input_seq.upper())
         self.length = len(input_seq)
-        
+
     def translation(self):
         if self.length % 3 == 0:
             return self.seq.translate()
         else:
             return "Partial codon"
- 
+
     def reverse_transcription(self):
         return str(self.seq.back_transcribe())
 
@@ -74,7 +74,7 @@ class Sort_positives(set):
 
     def __init__(self, element):
         self.positive = {int(i) for i in element if i > 0}
-  
+
     def add(self, number):
         if number > 0:
             self.positive.add(number)
