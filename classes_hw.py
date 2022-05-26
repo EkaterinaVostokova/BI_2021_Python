@@ -18,20 +18,22 @@ from threading import Thread
 
 
 # age in months
+
+
 class Mouse:
+
     def __init__(self, color, weight, age):
-        
         self.color = color
         self.weight = weight
         self.age = age
+
     def grow(self):
-        
         self.weight += 1
+
     def one_more_month(self):
-        
         self.age += 1
+
     def reverse_colors(self):
-        
         if self.color == "white":
             self.color = "black"
         elif self.color == "black":
@@ -48,37 +50,37 @@ class Mouse:
 
 string = str(input())
 class RNA:
+    
+    
     def __init__(self, input_seq=string):
-        
         self.seq = Seq(input_seq.upper())
         self.length = len(input_seq)
-    def translation(self):
         
+    def translation(self):
         if self.length % 3 == 0:
             return self.seq.translate()
         else:
             return "Partial codon"
-        
+ 
     def reverse_transcription(self):
-        
         return str(self.seq.back_transcribe())
 
-# 3. Напишите класс, унаследовавшись от сэтов, который будет содержать в себе только положительные числа при создании 
+# 3. Напишите класс, унаследовавшись от сэтов, который будет содержать в себе только положительные числа при создании
 # и не будет добавлять неположительные элементы (подсказка - методы конструктора и add)
 # In[23]:
 
 
 class Sort_positives(set):
+
     def __init__(self, element):
-
         self.positive = {int(i) for i in element if i > 0}
+  
     def add(self, number):
-
         if number > 0:
             self.positive.add(number)
         else:
             return "Not a positive number"
-        
+
 # 4. Создайте класс для сбора статистик по фастам.
 # Входные параметры:
 # Путь к фаста файлу
@@ -95,12 +97,14 @@ class Sort_positives(set):
 
 
 class Statistics_Fasta:
+
     def __init__(self, path):
         self.path = path
         with open(self.path):
             self.sequences = list(SeqIO.parse(self.path, "fasta"))
 
     # Подсчёт числа последовательностей в фаста файле
+
     def sequences_number(self):
         return len(self.sequences)
 
